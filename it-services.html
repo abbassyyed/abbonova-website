@@ -238,6 +238,33 @@ footer {
     padding: 20px;
   }
 }
+
+  @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-left, .header-title, .header-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .mobile-menu-btn {
+    display: inline-block;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -319,6 +346,14 @@ footer {
   <footer>
     &copy; 2025 ABBONOVA IT Services. All rights reserved.
   </footer>
+<script>
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
 
 </body>
 </html>
