@@ -192,32 +192,33 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .title {
-    font-size: 1.6rem;
+  .button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 16px;
+    width: 100%;
+    padding: 0 10px;
   }
 
   .glow-button {
-    font-size: 1.2rem;
-    padding: 1rem 2rem;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-logo {
-    justify-content: flex-start;
-    margin-bottom: 20px;
+    max-width: 100%; /* Remove max-width restriction */
+    width: 100%;      /* Full width of column */
+    flex: none;       /* Disable flex shrink/grow */
+    font-size: 1rem;
+    padding: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .glow-button {
-    font-size: 1.1rem;
-    padding: 1rem 1.5rem;
-    width: 100%;
+  .button-group {
+    grid-template-columns: 1fr; /* One button per row */
   }
+
+  .glow-button {
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+}
 
   .title {
     font-size: 1.4rem;
@@ -245,4 +246,4 @@ body {
   .glow-button {
     width: 100%;
   }
-}
+
