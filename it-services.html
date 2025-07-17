@@ -263,6 +263,121 @@ footer {
   .mobile-menu-btn {
     display: inline-block;
   }
+/* Header container base */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* Logo */
+.header-logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  order: 2;
+}
+
+.logo {
+  height: 50px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 15px 4px rgba(0, 217, 255, 0.6);
+  cursor: pointer;
+}
+
+/* Main (H1 + Menu btn) */
+.header-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  order: 1;
+}
+.header-title {
+  font-size: 24px;
+  white-space: nowrap;
+}
+
+/* Navigation links */
+.nav-links {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  order: 3;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+nav a:hover {
+  color: #00d9ff;
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px;
+  }
+
+  .header-logo {
+    order: 1;
+    margin-bottom: 10px;
+  }
+
+  .header-main {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+  }
+
+  .header-title {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    position: absolute;
+    right: 0;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
 }
 
 </style>
@@ -270,23 +385,24 @@ footer {
 <body>
 
 <header>
-  <div class="header-left">
-    <a href="it-services.html" class="logo-link">
-      <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo">
-    </a>
-  </div>
-  <h1 class="header-title">ABBONOVA IT SERVICES</h1>
-  <div class="header-right">
+  <div class="header-container">
+    <div class="header-logo">
+      <a href="it-services.html" class="logo-link">
+        <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo" />
+      </a>
+    </div>
+    <div class="header-main">
+      <h1 class="header-title">ABBONOVA IT SERVICES</h1>
+      <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
     <nav class="nav-links">
       <a href="#">Home</a>
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
   </div>
 </header>
-
 
 <section class="hero">
   <div class="hero-video-wrapper">
