@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet"/>
 <style>  
 /* Reset */
+* /* Base styles */
 * {
   margin: 0;
   padding: 0;
@@ -16,105 +17,124 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #0f1a26;
+  background-color: #0f1a26;
   color: white;
 }
 
+/* Header container */
 .header {
-  background: #0f1a26;
   padding: 1rem;
-  text-align: center;
+  background-color: #0f1a26;
 }
 
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.left-section h1 {
-  font-size: 1.2rem;
-  white-space: nowrap;
-}
-
-.center-section {
-  flex: 1 1 100%;
+/* Logo center (for both views) */
+.logo-container {
   display: flex;
   justify-content: center;
-  margin: 0.5rem 0;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .logo {
-  max-height: 50px;
+  max-height: 60px;
 }
 
-.right-section {
+/* Row with title + menu/hamburger */
+.top-row {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/* Title text */
+.left-title h1 {
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+/* Desktop menu links */
+.desktop-menu {
+  display: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+/* Hamburger button (mobile) */
 .menu-toggle {
-  font-size: 24px;
+  font-size: 26px;
   background: none;
   border: none;
   color: white;
   cursor: pointer;
 }
 
-/* Navigation links */
-.nav-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
+/* Mobile dropdown menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
 }
 
-/* Responsive */
+.mobile-menu a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+/* Hide on desktop */
+.mobile-only {
+  display: flex;
+}
+
+/* Desktop layout */
 @media (min-width: 768px) {
-  .header-inner {
-    flex-wrap: nowrap;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
   }
 
-  .center-section {
-    flex: 0 0 auto;
+  .logo-container {
     order: 2;
     margin: 0;
+    flex: 0 0 auto;
   }
 
-  .left-section {
+  .top-row {
     order: 1;
     flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .left-title {
     text-align: left;
-  }
-
-  .right-section {
-    order: 3;
     flex: 1;
-    justify-content: flex-end;
   }
 
-  .nav-links {
-    justify-content: center;
+  .desktop-menu {
+    display: block;
+  }
+
+  .hamburger,
+  .mobile-menu {
+    display: none;
   }
 }
 
-.mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-}
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-}
-nav a:hover {
-  color: #00d9ff;
-}
 
 /* Hero with video */
 .hero {
@@ -425,27 +445,39 @@ nav a:hover {
 <body>
 
 <header class="header">
-  <div class="header-inner">
-    <div class="left-section">
+  <div class="logo-container">
+    <img src="logo.png" alt="Abbonova Logo" class="logo" />
+  </div>
+
+  <div class="top-row">
+    <div class="left-title">
       <h1>ABBONOVA IT SERVICES</h1>
     </div>
 
-    <div class="center-section">
-      <img src="logo.png" alt="Logo" class="logo" />
+    <div class="right-menu desktop-menu">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
     </div>
 
-    <div class="right-section">
-      <button class="menu-toggle">☰</button>
+    <div class="hamburger mobile-only">
+      <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
     </div>
   </div>
 
-  <nav class="nav-links">
+  <div class="mobile-menu mobile-only" id="mobileMenu">
     <a href="#">Home</a>
     <a href="#">Services</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
-  </nav>
+  </div>
 </header>
+
 
 
 <section class="hero">
