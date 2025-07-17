@@ -21,34 +21,51 @@ body {
 
 /* Header */
 header {
-  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  padding: 20px 40px;
   background: rgba(0, 0, 0, 0.5);
-}
-header h1 {
-  font-size: 24px;
-  color: #ffffff;
-  margin-right: auto;
+  flex-wrap: wrap;
 }
 
+.header-left {
+  flex: 1;
+}
+.header-title {
+  flex: 1;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+}
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
 .logo {
   height: 50px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .logo:hover {
   transform: scale(1.15);
   box-shadow: 0 0 15px 4px rgba(0, 217, 255, 0.6);
   cursor: pointer;
 }
-nav {
+.nav-links {
   display: flex;
-  flex-wrap: wrap;
   gap: 15px;
-  margin-top: 10px;
+}
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
 }
 nav a {
   color: white;
@@ -71,14 +88,11 @@ nav a:hover {
 .hero-video-wrapper {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 100%;
   height: 100%;
-  max-width: 1600px;
-  z-index: 0;
   overflow: hidden;
-  border-radius: 16px;
+  z-index: 0;
 }
 .bg-video {
   width: 100%;
@@ -86,6 +100,7 @@ nav a:hover {
   object-fit: cover;
   filter: brightness(0.4);
 }
+
 .hero-content {
   position: relative;
   z-index: 1;
@@ -228,17 +243,23 @@ footer {
 <body>
 
 <header>
-       <h1>ABBONOVA IT SERVICES</h1>
-       <a href="it-services.html" class="logo-link" style="display: flex; align-items: center; gap: 10px;">
-    <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo">
-  </a>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="header-left">
+    <a href="it-services.html" class="logo-link">
+      <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo">
+    </a>
+  </div>
+  <h1 class="header-title">ABBONOVA IT SERVICES</h1>
+  <div class="header-right">
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
 </header>
+
 
 <section class="hero">
   <div class="hero-video-wrapper">
