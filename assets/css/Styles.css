@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #85A3FF, #ADC2FF); /* Fixed gradient */
+  background: linear-gradient(to right, #85A3FF, #ADC2FF);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -50,6 +50,7 @@ body {
   font-size: 2rem;
   font-weight: 700;
   color: #ffffff;
+  text-align: center;
 }
 
 /* Hero Section */
@@ -80,12 +81,12 @@ body {
 
 /* Button Styling */
 .glow-button {
-  flex: 1 1 220px; /* Equal base width */
-  max-width: 220px; /* Keeps buttons from being too wide */
+  flex: 1 1 220px;
+  max-width: 220px;
   background-color: white;
   color: #003366;
   border: 2px solid #ccc;
-  padding: 0.6rem 1.6rem; /* Reduced height */
+  padding: 0.6rem 1.6rem;
   font-size: 1.1rem;
   font-weight: 600;
   border-radius: 12px;
@@ -130,13 +131,12 @@ body {
   background: linear-gradient(to right, #003366, #002244);
   color: #ffffff;
   padding: 10px 5px 5px 5px;
-  font-size: 0.8rem; /* Slightly smaller text */
+  font-size: 0.8rem;
   margin: 0 auto;
-  width: 85%; /* Narrower than full width (was 90%) */
-  max-width: 1400px; /* Reduced from 1400px */
-  border-radius: 12px 12px 0 0; /* Smaller radius */
+  width: 85%;
+  max-width: 1400px;
+  border-radius: 12px 12px 0 0;
 }
-
 
 .footer-content {
   display: flex;
@@ -194,31 +194,19 @@ body {
 @media (max-width: 768px) {
   .button-group {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-columns: 1fr 1fr;
     gap: 16px;
     width: 100%;
     padding: 0 10px;
   }
 
   .glow-button {
-    max-width: 100%; /* Remove max-width restriction */
-    width: 100%;      /* Full width of column */
-    flex: none;       /* Disable flex shrink/grow */
+    max-width: 100%;
+    width: 100%;
+    flex: none;
     font-size: 1rem;
     padding: 1rem;
   }
-}
-
-@media (max-width: 480px) {
-  .button-group {
-    grid-template-columns: 1fr; /* One button per row */
-  }
-
-  .glow-button {
-    font-size: 1rem;
-    padding: 0.9rem;
-  }
-}
 
   .title {
     font-size: 1.4rem;
@@ -228,6 +216,7 @@ body {
   .main-content {
     padding: 40px 10px;
     gap: 20px;
+    flex-direction: column;
   }
 
   .logo-title-wrapper {
@@ -237,13 +226,17 @@ body {
   }
 }
 
-
-  .main-content {
-    padding: 40px 10px;
-    gap: 30px;
+@media (max-width: 480px) {
+  .button-group {
+    grid-template-columns: 1fr;
   }
 
   .glow-button {
-    width: 100%;
+    font-size: 1rem;
+    padding: 0.9rem;
   }
 
+  .title {
+    font-size: 1.2rem;
+  }
+}
