@@ -49,10 +49,13 @@ header h1 {
 }
 
 .logo {
-  height: 50px;
+  max-width: 100px;
+  height: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
 }
+
 .logo:hover {
   transform: scale(1.15);
   box-shadow: 0 0 15px 4px rgba(0, 217, 255, 0.6);
@@ -252,12 +255,13 @@ footer {
     </a>
   </div>
   <div class="header-right">
-    <nav>
-      <a href="#">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+   <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</div>
+<nav id="main-nav" class="nav-links">
+  <a href="#">Home</a>
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</nav>
   </div>
 </header>
 
