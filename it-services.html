@@ -362,14 +362,18 @@ footer {
   <a href="mailto:info@abbonova.com">Contact Us</a>
 </section><footer>
   &copy; 2025 ABBONOVA IT Services. All rights reserved.
-</footer><script>
+</footer>
+  
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<script>
   function toggleMenu() {
     const nav = document.getElementById("navLinks");
     nav.classList.toggle("active");
   }
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-    particlesJS('particles-js', {
+  // Initialize particles after library is loaded
+  particlesJS("particles-js", {
     particles: {
       number: { value: 80, density: { enable: true, value_area: 800 } },
       color: { value: "#00d9ff" },
@@ -384,7 +388,6 @@ footer {
     },
     retina_detect: true
   });
-
-
-</script></body>
+</script>
+</body>
 </html>
