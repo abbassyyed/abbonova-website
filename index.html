@@ -40,63 +40,99 @@
       z-index: -1;
     }
 
-    header {
-      width: 100%;
-      padding: 20px 40px;
-      background: rgba(0, 14, 40, 0.6);
-      display: flex;
-      justify-content: center;
-    }
+    /* Updated Header Styling */
+header {
+  width: 100%;
+  background: rgba(0, 14, 40, 0.6);
+  padding: 20px 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
 
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1200px;
-      width: 100%;
-    }
+/* Logo centered at top */
+.header-top {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 
-    .header-left h1 {
-      font-size: 1.3rem;
-      color: white;
-    }
+    
+    logo-centered {
+  height: 60px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
 
-    .header-center .logo {
-      height: 60px;
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
+.logo-centered:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px #00d9ff);
+}
 
-    .logo-link:hover .logo {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 10px #b6bcfa);
-    }
+    /* Title + Hamburger Row */
+.header-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
 
-    .header-right {
-      position: relative;
-    }
+.site-title {
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+    ./* Dropdown Menu Styling */
+.nav-links {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-top: 10px;
+  width: 90%;
+  max-width: 300px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease-in-out;
+}
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
+.nav-links.active {
+  display: flex;
+}
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
 
-    .nav-links a:hover {
-      color: #b6bcfa;
-    }
+  .nav-links li {
+  margin-bottom: 12px;
+}
 
-    .hamburger {
-      display: none;
-      font-size: 26px;
-      cursor: pointer;
-    }
+.nav-links li:last-child {
+  margin-bottom: 0;
+}
 
+.nav-links a {
+  color: #c7d0e5;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00d9ff;
+}
+
+   /* Hamburger button on the right side of title */
+.hamburger {
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 5px 10px;
+}
     .main-content {
       text-align: center;
       padding: 80px 20px 40px;
@@ -281,28 +317,21 @@
 
 <!-- Header -->
 <header>
-  <div class="header-container">
-    <div class="header-left">
-      <h1 class="site-title">ABBONOVA IT Services</h1>
-    </div>
-
-    <div class="header-center">
-      <a href="#" class="logo-link">
-        <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo" />
-      </a>
-    </div>
-
-    <div class="header-right">
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="it-services.html">IT Services</a></li>
-        <li><a href="general-trading.html">General Trading</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
+  <div class="header-top">
+    <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo-centered" />
   </div>
+  <div class="header-title-bar">
+    <h1 class="site-title">ABBONOVA IT Services</h1>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="it-services.html">IT Services</a></li>
+    <li><a href="general-trading.html">General Trading</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </header>
+
 
 <!-- Main Content -->
 <main class="main-content">
@@ -376,3 +405,4 @@
 
 </body>
 </html>
+
