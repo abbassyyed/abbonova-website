@@ -2,41 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ABBONOVA IT Services - Cutting-edge tech and IT solutions with a futuristic touch.">
-  <meta name="author" content="Muhammad Abbas, Muhammad Adil">
-  <meta name="keywords" content="ABBONOVA, IT Services, Tech Solutions, Web Development, AI, Cloud Computing, Pakistan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="ABBONOVA IT Services - Cutting-edge tech and IT solutions." />
+  <meta name="keywords" content="ABBONOVA, IT Services, Trading, Abbas, Adil" />
+  <meta name="author" content="ABBONOVA IT Services" />
   <title>ABBONOVA IT Services</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" />
   <link rel="stylesheet" href="assets/css/Styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="particles-bg">
-    <header>
-      <div class="container">
-        <div class="logo">ABBONOVA</div>
-        <nav id="navMenu" class="nav-menu">
-          <a href="#">Home</a>
-          <a href="#">Services</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-        </nav>
-        <div class="nav-toggle" id="mobileMenu">&#9776;</div>
-      </div>
-    </header>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="assets/videos/bg-video.mp4" type="video/mp4" />
+  </video>
+  <div id="particles-bg"></div>
+  <div class="overlay"></div>
 
-    <section class="hero">
-      <div class="layer layer-back"></div>
-      <div class="layer layer-middle"></div>
-      <div class="layer layer-front">
-        <h1 class="animated-text">Futuristic Tech Solutions</h1>
-        <p>Empowering the Future with ABBONOVA IT Services</p>
-      </div>
-    </section>
-  </div>
+  <header>
+    <div class="header-top">
+      <img src="assets/images/logo.png" alt="ABBONOVA Logo" />
+    </div>
+    <div class="header-title-bar">
+      <h1 class="site-title">ABBONOVA IT Services</h1>
+      <div class="hamburger" id="mobileMenu">☰</div>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="it-services.html">IT Services</a></li>
+      <li><a href="general-trading.html">General Trading</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </header>
 
+  <main class="hero">
+    <h1>Welcome to ABBONOVA</h1>
+    <p>Innovative IT Solutions and Trusted General Trading</p>
+  </main>
+
+  <!-- Reinserted About/Services/Founders/Footer (same as user provided) -->
+  <section class="about-services-section" id="about">
+    <div class="info-card">
+      <h2>About ABBONOVA</h2>
+      <p>
+        ABBONOVA offers cutting-edge IT solutions and general trading expertise. We serve the private
+        and government sectors, delivering reliable services, products, and digital solutions.
+      </p>
+    </div>
+    <div class="info-card" id="services">
+      <h2>Our Services</h2>
+      <ul>
+        <li>Software Development & IT Consultancy</li>
+        <li>Import & Export (Machinery, Equipment, Tools)</li>
+        <li>Government Procurement & Supply</li>
+        <li>Office Automation & Network Infrastructure</li>
+        <li>Web Development & Hosting</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="founders">
+    <h2>Meet the Founders</h2>
+    <div class="founders">
+      <div class="founder-card">
+        <img src="assets/images/founder1.png" alt="Muhammad Abbas">
+        <h4>Muhammad Abbas</h4>
+        <p>Founder & CEO</p>
+      </div>
+      <div class="founder-card">
+        <img src="assets/images/founder2.png" alt="Muhammad Adil">
+        <h4>Muhammad Adil</h4>
+        <p>Co-Founder & CTO</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="contact">
+    <div class="footer-left">
+      <img src="assets/images/logo.png" alt="ABBONOVA Logo">
+      <p>ABBONOVA delivers reliable IT and general trading services. We are a trusted government vendor.</p>
+    </div>
+    <div class="footer-right">
+      <h3>Contact Us</h3>
+      <p>Email: info@abbonova.com</p>
+      <p>WhatsApp: +92 344 0716556</p>
+      <p>Swabi, Pakistan</p>
+      <p>NTN: G889840</p>
+    </div>
+  </footer>
+  <div class="footer-bottom">&copy; 2025 ABBONOVA. All rights reserved.</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.net.min.js"></script>
   <script src="assets/js/Script.js"></script>
 </body>
 </html>
