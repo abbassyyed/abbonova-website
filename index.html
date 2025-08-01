@@ -2,364 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ABBONOVA IT Services - Cutting-edge tech and IT solutions with a futuristic touch.">
+  <meta name="author" content="Muhammad Abbas, Muhammad Adil">
+  <meta name="keywords" content="ABBONOVA, IT Services, Tech Solutions, Web Development, AI, Cloud Computing, Pakistan">
   <title>ABBONOVA IT Services</title>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: white;
-      background-color: #0b1120;
-    }
-
-    video#bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -2;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 14, 40, 0.75);
-      z-index: -1;
-    }
-
-    /* Header */
-    header {
-      width: 100%;
-      background: rgba(0, 14, 40, 0.6);
-      padding: 20px 20px 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .header-top {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-
-    .logo-centered {
-      height: 60px;
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-
-    .logo-centered:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 10px #00d9ff);
-    }
-
-    .header-title-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1000px;
-    }
-
-    .site-title {
-      font-size: 1.4rem;
-      color: white;
-      text-align: center;
-      flex-grow: 1;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 28px;
-      color: white;
-      cursor: pointer;
-    }
-
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      list-style: none;
-      margin-top: 15px;
-    }
-
-    .nav-links li a {
-      color: #c7d0e5;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-
-    .nav-links li a:hover {
-      color: #00d9ff;
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .header-title-bar {
-        flex-direction: row;
-        align-items: center;
-      }
-
-      .site-title {
-        text-align: center;
-        font-size: 1.2rem;
-      }
-
-      .hamburger {
-        display: block;
-        margin-left: 10px;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        align-items: flex-start;
-        display: none;
-        background: rgba(0, 0, 0, 0.9);
-        padding: 15px 20px;
-        width: 90%;
-        max-width: 300px;
-        border-radius: 8px;
-        margin-top: 10px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-links li {
-        margin-bottom: 12px;
-      }
-
-      .nav-links li:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    .main-content {
-      text-align: center;
-      padding: 80px 20px 40px;
-    }
-
-    .main-content h2 {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-    }
-
-    .main-content p {
-      font-size: 1.2rem;
-      color: #c7d0e5;
-    }
-
-    .about-services-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 60px 20px;
-      gap: 30px;
-    }
-
-    .info-card {
-      flex: 1 1 400px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 25px;
-      border-radius: 10px;
-      max-width: 500px;
-    }
-
-    .info-card h2 {
-      margin-bottom: 15px;
-      color: #b6bcfa;
-    }
-
-    .info-card ul {
-      padding-left: 20px;
-    }
-
-    /* Founders Section */
-    #founders {
-      padding: 40px 20px;
-    }
-
-    #founders h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2rem;
-      color: #b6bcfa;
-    }
-
-    .founders {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .founder-card {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      max-width: 250px;
-    }
-
-    .founder-card img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      border: 3px solid #00000000;
-    }
-
-    .founder-card h4 {
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
-
-    .founder-card p {
-      color: #c7d0e5;
-      font-size: 0.95rem;
-    }
-
-    /* Footer */
-    .footer {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding: 40px 20px;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .footer-left {
-      flex: 1;
-      max-width: 500px;
-    }
-
-    .footer-left img {
-      height: 50px;
-      margin-bottom: 10px;
-    }
-
-    .footer-right {
-      flex: 1;
-      max-width: 400px;
-    }
-
-    .footer h3 {
-      color: #b6bcfa;
-      margin-bottom: 10px;
-    }
-
-    .footer p {
-      margin-bottom: 5px;
-      color: #d0d8f0;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding: 10px;
-      background: #000c1f;
-      font-size: 0.9rem;
-      color: #a3b3cc;
-    }
-
-    /* Responsive Footer */
-    @media (max-width: 768px) {
-      .footer {
-        flex-direction: column;
-        gap: 20px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" />
+  <link rel="stylesheet" href="assets/css/Styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
 </head>
-
 <body>
+  <div id="particles-bg">
+    <header>
+      <div class="container">
+        <div class="logo">ABBONOVA</div>
+        <nav id="navMenu" class="nav-menu">
+          <a href="#">Home</a>
+          <a href="#">Services</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+        <div class="nav-toggle" id="mobileMenu">&#9776;</div>
+      </div>
+    </header>
 
-<!-- Background Video -->
-<video autoplay muted loop playsinline id="bg-video">
-  <source src="assets/videos/bg-video.mp4" type="video/mp4" />
-</video>
-<div class="overlay"></div>
-
-<!-- Header -->
-<header>
-  <div class="header-top">
-    <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo-centered" />
+    <section class="hero">
+      <div class="layer layer-back"></div>
+      <div class="layer layer-middle"></div>
+      <div class="layer layer-front">
+        <h1 class="animated-text">Futuristic Tech Solutions</h1>
+        <p>Empowering the Future with ABBONOVA IT Services</p>
+      </div>
+    </section>
   </div>
-  <div class="header-title-bar">
-    <h1 class="site-title">ABBONOVA IT Services</h1>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-  </div>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="it-services.html">IT Services</a></li>
-    <li><a href="general-trading.html">General Trading</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</header>
 
-<!-- Main Content -->
-<main class="main-content">
-  <h2>Welcome to ABBONOVA</h2>
-  <p>Innovative IT Solutions and Trusted General Trading</p>
-</main>
-
-<!-- About and Services -->
-<section class="about-services-section" id="about">
-  <div class="info-card">
-    <h2 style="text-align:center;">About ABBONOVA</h2>
-    <p style="text-align:center;">
-      ABBONOVA offers cutting-edge IT solutions and general trading expertise. We serve the private
-      and government sectors, delivering reliable services, products, and digital solutions.
-    </p>
-  </div>
-  <div class="info-card" id="services">
-    <h2 style="text-align:center;">Our Services</h2>
-    <ul>
-      <li>Software Development & IT Consultancy</li>
-      <li>Import & Export (Machinery, Equipment, Tools)</li>
-      <li>Government Procurement & Supply</li>
-      <li>Office Automation & Network Infrastructure</li>
-      <li>Web Development & Hosting</li>
-    </ul>
-  </div>
-</section>
-
-<!-- Founders -->
-<section id="founders">
-  <h2>Meet the Founders</h2>
-  <div class="founders">
-    <div class="founder-card">
-      <img src="assets/images/founder1.png" alt="Muhammad Abbas">
-      <h4>Muhammad Abbas</h4>
-      <p>Founder & CEO</p>
-    </div>
-    <div class="founder-card">
-      <img src="assets/images/founder2.png" alt="Muhammad Adil">
-      <h4>Muhammad Adil</h4>
-      <p>Co-Founder & CTO</p>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer" id="contact">
-  <div class="footer-left">
-    <
+  <script src="assets/js/Script.js"></script>
+</body>
+</html>
