@@ -77,22 +77,14 @@ header {
   text-decoration: none;
   font-weight: 600;
   position: relative;
+  transition: text-shadow 0.3s ease, color 0.3s ease;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background: #b6bcfa;
-  left: 0;
-  bottom: -4px;
-  transition: width 0.3s;
+.nav-links a:hover {
+  color: #b6bcfa;
+  text-shadow: 0 0 8px #b6bcfa, 0 0 16px #b6bcfa;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
-}
 
 .hamburger {
   display: none;
