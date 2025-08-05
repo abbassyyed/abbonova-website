@@ -20,25 +20,27 @@
       background-color: #0b1120;
     }
 
-    video#bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -2;
-    }
+    .bg-image {
+  background-image: url('assets/images/bg-image.jpg'); /* <-- Your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  position: relative;
+  z-index: 1;
+}
 
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 14, 40, 0.75); /* Transparent dark blue */
-      z-index: -1;
-    }
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Optional dark overlay */
+  z-index: 2;
+}
+
 
     header {
       width: 100%;
@@ -273,11 +275,11 @@
 
 <body>
 
-<!-- Background Video -->
-<video autoplay muted loop playsinline id="bg-video">
-  <source src="assets/videos/bg-video.mp4" type="video/mp4" />
-</video>
-<div class="overlay"></div>
+<!-- Background Image Section -->
+<div class="bg-image">
+  <div class="overlay"></div>
+</div>
+
 
 <!-- Header -->
 <header>
@@ -376,3 +378,4 @@
 
 </body>
 </html>
+
