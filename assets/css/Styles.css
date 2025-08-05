@@ -57,13 +57,14 @@ body {
 .main-content {
   flex: 1;
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 30px;
   padding: 60px 20px;
   text-align: center;
-  index: 2
+  index: 3;
 }
 
 .tagline {
