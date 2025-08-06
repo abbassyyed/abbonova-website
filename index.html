@@ -13,6 +13,159 @@
       --light: #ffffff;
     }
 
+  header {
+    background-color: var(--dark);
+    color: var(--light);
+  }
+
+  nav {
+    background-color: var(--dark);
+  }
+
+  .logo {
+    height: 60px;
+    transition: filter 0.3s ease;
+  }
+
+  .glow:hover {
+    filter: drop-shadow(0 0 5px var(--primary));
+  }
+
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .nav-links li {
+    position: relative;
+  }
+
+  .nav-links li a {
+    color: var(--light);
+    text-decoration: none;
+    padding: 12px 16px;
+    display: block;
+    transition: color 0.3s;
+  }
+
+  .nav-links li a:hover {
+    color: var(--primary);
+  }
+
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--dark);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    flex-direction: column;
+    min-width: 180px;
+    border: 1px solid #222;
+    z-index: 10;
+  }
+
+  .submenu li a {
+    padding: 10px 16px;
+    white-space: nowrap;
+  }
+
+  .services-menu:hover .submenu {
+    display: flex;
+  }
+
+  .mobile-top {
+    display: none;
+  }
+
+  .header-row {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+  }
+
+  .company-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--light);
+  }
+
+  .hamburger {
+    font-size: 28px;
+    color: var(--light);
+    cursor: pointer;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+    }
+
+    .nav-links li {
+      border-top: 1px solid #333;
+      width: 100%;
+    }
+
+    .nav-links li a {
+      padding: 14px 20px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    .submenu {
+      position: static;
+      border: none;
+      display: none;
+    }
+
+    .services-menu.open .submenu {
+      display: flex;
+    }
+
+    .mobile-top {
+      display: block;
+      text-align: center;
+      padding: 16px 0 0 0;
+    }
+
+    .mobile-top img {
+      height: 60px;
+    }
+
+    .header-row {
+      display: flex;
+    }
+  }
+
+  /* Smooth slide down animation */
+  .nav-links.show {
+    display: flex;
+    animation: slideDown 0.3s ease-in-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -320,21 +473,20 @@
 <body>
 
 <header>
-  <!-- Mobile Logo at Top -->
-  <div class="mobile-top">
-    <a href="https://www.abbonova.com">
-      <img src="assets/images/logo.png" alt="Abbonova Logo" class="logo glow" />
-    </a>
-  </div>
-
-  <!-- Row: Company Name + Hamburger -->
-  <div class="header-row">
-    <div class="company-name">ABBONOVA IT SERVICES</div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-  </div>
-
-  <!-- Navigation -->
   <nav>
+    <div class="header-container">
+      <div class="header-left">
+        <span class="company-name">ABBONOVA IT SERVICES</span>
+      </div>
+      <div class="header-center">
+        <a href="https://www.abbonova.com">
+          <img src="assets/images/logo.png" alt="Logo" class="logo glow" />
+        </a>
+      </div>
+      <div class="header-right">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+      </div>
+    </div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li class="services-menu">
@@ -349,11 +501,12 @@
     </ul>
   </nav>
 
-  <div class="overlay"></div>
   <div class="hero-content">
     <h1>Welcome to ABBONOVA</h1>
     <p>Your Trusted IT & Trading Partner</p>
   </div>
+
+  <div class="overlay"></div>
 </header>
 
 <section class="section" id="about">
