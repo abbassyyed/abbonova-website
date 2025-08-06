@@ -99,10 +99,14 @@ nav a:hover {
   }
 }
 .hero {
-  background: url('assets/images/bg-image.jpg') center/cover no-repeat;
-  color: var(--light);
-  padding: 100px 20px;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
   text-align: center;
+  background: url('assets/images/bg-image.jpg') center/cover no-repeat;
   background-attachment: fixed;
 }
 
@@ -116,15 +120,6 @@ nav a:hover {
   color: #dce1f0;
 }
 
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-}
 
 .overlay {
   position: absolute;
@@ -139,6 +134,10 @@ nav a:hover {
 .hero-content {
   position: relative;
   z-index: 2;
+}
+.hero-content h1,
+.hero-content p {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .section {
