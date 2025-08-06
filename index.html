@@ -36,6 +36,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 10;
 }
 
 .logo {
@@ -60,6 +62,7 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
+  z-index: 20;
 }
 
 nav a {
@@ -79,6 +82,11 @@ nav a:hover {
 }
 
 @media (max-width: 768px) {
+  
+  .header-container {
+    flex-wrap: wrap;
+  }
+
   nav ul {
     display: none;
     flex-direction: column;
@@ -177,6 +185,9 @@ nav a:hover {
   padding-left: 20px;
 }
 
+.card p, .card h3 {
+  text-align: center;
+}
 .founders {
   display: flex;
   justify-content: center;
@@ -235,8 +246,10 @@ footer {
 <body>
   <header>
     <div class="header-container">
- <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo" />
-<div class="company-name">ABBONOVA IT Services</div>
+ <div style="display: flex; align-items: center;">
+  <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo" />
+  <div class="company-name">ABBONOVA IT Services</div>
+</div>
       <nav>
         <ul>
           <li><a href="#about">About</a></li>
@@ -261,13 +274,13 @@ footer {
     <h2>About ABBONOVA</h2>
     <div class="cards">
       <div class="card">
-        <p align= center>
+        <p>
           ABBONOVA offers cutting-edge IT solutions and general trading expertise. We serve the private
           and government sectors, delivering reliable services, products, and digital solutions.
         </p>
       </div>
       <div class="card">
-        <h3 align= center>Our Services</h3>
+        <h3>Our Services</h3>
         <ul>
           <li>Software Development & IT Consultancy</li>
           <li>Import & Export (Machinery, Equipment, Tools)</li>
@@ -311,6 +324,11 @@ footer {
   function toggleMenu() {
     const nav = document.querySelector('nav ul');
     nav.classList.toggle('active');
+document.querySelectorAll("nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.querySelector("nav ul").classList.remove("active");
+  });
+});
   }
 </script>
 </body>
