@@ -5,359 +5,278 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ABBONOVA IT Services</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
-    :root {
-      --primary: #1a1a2e;
-      --secondary: #16213e;
-      --accent: #b6bcfa;
-      --light: #ffffff;
+  :root {
+    --primary: #1a1a2e;
+    --secondary: #16213e;
+    --accent: #b6bcfa;
+    --light: #ffffff;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--primary);
+    color: var(--light);
+    overflow-x: hidden;
+  }
+
+  header {
+    background: url('assets/images/bg-image.jpg') no-repeat center center/cover;
+    position: relative;
+    height: 100vh;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(10, 18, 56, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .hero-content h1,
+  .hero-content p {
+    color: var(--light);
+    text-shadow: 0 0 10px #000;
+  }
+
+  .hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+
+  .hero-content p {
+    font-size: 20px;
+  }
+
+  nav {
+    background: rgba(10, 18, 56, 0.85);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    padding: 12px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    transition: 0.3s ease;
+  }
+
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .company-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--light);
+  }
+
+  .logo {
+    height: 50px;
+    transition: filter 0.3s;
+  }
+
+  .logo.glow:hover {
+    filter: drop-shadow(0 0 8px var(--accent));
+  }
+
+  .mobile-top {
+    display: none;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .hamburger {
+    font-size: 26px;
+    color: var(--light);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-links li {
+    position: relative;
+  }
+
+  .nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    background: var(--secondary);
+    top: 100%;
+    left: 0;
+    padding: 8px 0;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    z-index: 5;
+  }
+
+  .services-menu:hover .submenu {
+    display: block;
+  }
+
+  .submenu li a {
+    padding: 8px 20px;
+    white-space: nowrap;
+  }
+
+  nav.open .nav-links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .mobile-top {
+      display: block;
     }
 
-    * {
-      box-sizing: border-box;
+    .header-row {
+      flex-direction: row;
+      padding: 0 20px;
+      justify-content: space-between;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--primary);
-      color: var(--light);
-      overflow-x: hidden;
-    }
-
-    header {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-      background: url('assets/images/bg-image.jpg') no-repeat center center/cover;
-    }
-
-    .video-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(10, 18, 56, 0.7);
-      z-index: 0;
+    .company-name {
+      font-size: 16px;
     }
 
     nav {
-      position: fixed;
-      top: 0;
+      position: static;
+      box-shadow: none;
+      background: none;
+      padding: 0;
+    }
+
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--secondary);
+      flex-direction: column;
+      align-items: flex-start;
+      width: 220px;
+      max-height: 0;
+      overflow: hidden;
+      border-radius: 0 0 8px 8px;
+      transition: max-height 0.4s ease;
+    }
+
+    nav.open .nav-links {
+      max-height: 500px;
+      padding: 8px 0;
+    }
+
+    .nav-links li {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      background-color: rgba(10, 18, 56, 0.85);
-      z-index: 20;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      font-weight: 500;
+    }
+
+    .nav-links a {
+      padding: 14px 20px;
+      width: 100%;
+    }
+
+    .submenu {
+      display: none;
+      position: static;
+      box-shadow: none;
+      padding-left: 20px;
+    }
+
+    .services-menu.open .submenu {
+      display: block;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--light);
-      font-size: 22px;
-      font-weight: 700;
-      user-select: none;
+      height: 60px;
     }
+  }
+</style>
 
-    .logo img {
-      height: 40px;
-      width: auto;
-      display: block;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 24px;
-      margin: 0;
-      padding: 0;
-      transition: max-height 0.4s ease;
-      overflow: hidden;
-    }
-
-    nav ul li {
-      opacity: 1;
-      transform: none;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    nav a {
-      color: var(--light);
-      text-decoration: none;
-      font-weight: 500;
-      padding: 8px 0;
-      display: block;
-      white-space: nowrap;
-    }
-
-    nav a:hover,
-    nav a:focus {
-      color: var(--accent);
-      outline: none;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: var(--light);
-      user-select: none;
-    }
-
-    /* Mobile nav */
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        position: fixed;
-        top: 60px;
-        right: 20px;
-        width: 180px;
-        max-height: 0;
-        background: var(--secondary);
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-        padding: 0;
-      }
-
-      nav ul.active {
-        max-height: 500px; /* enough for all links */
-      }
-
-      nav ul li {
-        opacity: 0;
-        transform: translateY(-15px);
-        padding: 14px 18px;
-      }
-
-      nav ul.active li {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      nav a {
-        padding: 0;
-      }
-
-      .hamburger {
-        display: block;
-      }
-    }
-
-    .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: var(--light);
-      z-index: 10;
-      padding: 0 15px;
-      max-width: 90vw;
-    }
-
-    .hero-text h1 {
-      font-size: 48px;
-      margin: 0;
-      text-shadow: 0 0 10px #000;
-      line-height: 1.1;
-    }
-
-    .hero-text p {
-      font-size: 20px;
-      margin-top: 12px;
-      text-shadow: 0 0 8px #000;
-    }
-
-    /* About Section */
-    section.section {
-      max-width: 1000px;
-      margin: 60px auto 80px;
-      padding: 0 20px;
-    }
-
-    section.section h2 {
-      font-size: 28px;
-      margin-bottom: 30px;
-      font-weight: 700;
-      text-align: center;
-      color: var(--accent);
-    }
-
-    .cards {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .card {
-      background: var(--secondary);
-      border-radius: 10px;
-      padding: 25px 30px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-      flex: 1 1 300px;
-      color: var(--light);
-      font-weight: 400;
-      line-height: 1.5;
-      min-width: 280px;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .card ul {
-      padding-left: 20px;
-      margin: 0;
-    }
-
-    .card ul li {
-      margin-bottom: 8px;
-    }
-
-    /* Founders Section */
-    .founders {
-      display: flex;
-      gap: 40px;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 20px 0;
-    }
-
-    .founder {
-      background: var(--secondary);
-      border-radius: 12px;
-      padding: 30px 20px 40px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.5);
-      width: 220px;
-      text-align: center;
-      color: var(--light);
-      font-weight: 500;
-      user-select: none;
-    }
-
-    .founder img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 3px solid var(--accent);
-      background: var(--primary);
-    }
-
-    .founder h4 {
-      margin: 0 0 8px;
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--accent);
-    }
-
-    .founder p {
-      margin: 0;
-      font-size: 16px;
-      color: var(--light);
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--secondary);
-      padding: 30px 20px 20px;
-      color: var(--light);
-      font-weight: 400;
-      font-size: 14px;
-      user-select: none;
-    }
-
-    .footer-grid {
-      display: flex;
-      gap: 50px;
-      max-width: 1000px;
-      margin: auto;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    .footer-grid > div {
-      flex: 1 1 280px;
-      min-width: 280px;
-    }
-
-    .footer-grid img.logo {
-      height: 40px;
-      margin-bottom: 15px;
-    }
-
-    .footer-grid h3 {
-      margin-top: 0;
-      margin-bottom: 12px;
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 25px;
-      font-size: 13px;
-      color: #bbb;
-    }
-
-  </style>
 </head>
 <body>
   <header>
-    <video autoplay muted loop class="video-bg" playsinline>
-      <source src="video.mp4" type="video/mp4" />
-    </video>
-    <div class="overlay"></div>
-    <nav>
-      <div class="logo">
-        <img src="assets/images/logo.png" alt="ABBONOVA Logo" />
-        ABBONOVA IT Services
-      </div>
-      <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" onclick="toggleMenu()" onkeydown="if(event.key==='Enter'){ toggleMenu(); }">
-        ☰
-      </div>
-      <ul>
-        <li><a href="#hero" tabindex="0">Home</a></li>
-        <li><a href="#about" tabindex="0">About</a></li>
-        <li><a href="#services" tabindex="0">Services</a></li>
-        <li><a href="#founders" tabindex="0">Founders</a></li>
-        <li><a href="#contact" tabindex="0">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- Mobile Logo Centered -->
+  <div class="mobile-top">
+    <a href="https://www.abbonova.com">
+      <img src="assets/images/logo.png" alt="Abbonova Logo" class="logo glow" />
+    </a>
+  </div>
 
-    <div class="hero-text" id="hero">
+  <!-- Header Row -->
+  <div class="header-row">
+    <div class="company-name">ABBONOVA IT SERVICES</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li class="services-menu">
+        <a href="#">Services</a>
+        <ul class="submenu">
+          <li><a href="#it-services">IT Services</a></li>
+          <li><a href="#general-trading">General Trading</a></li>
+        </ul>
+      </li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
       <h1>Welcome to ABBONOVA</h1>
-      <p>Your Technology and Trading Partner</p>
+      <p>Your Trusted IT & Trading Partner</p>
     </div>
-  </header>
+  </section>
 
   <section class="section" id="about">
-    <h2>About ABBONOVA</h2>
+    <h2>Why ABBONOVA</h2>
     <div class="cards">
       <div class="card">
+        <h3>About us</h3>
         <p>
           ABBONOVA offers cutting-edge IT solutions and general trading expertise. We serve the private
           and government sectors, delivering reliable services, products, and digital solutions.
@@ -410,34 +329,29 @@
   </footer>
 
   <script>
-    const navUl = document.querySelector('nav ul');
-    const links = document.querySelectorAll('nav ul li');
-    const hamburger = document.querySelector('.hamburger');
+  function toggleMenu() {
+    document.querySelector("nav").classList.toggle("open");
+  }
 
-    function toggleMenu() {
-      navUl.classList.toggle('active');
-
-      links.forEach((link, index) => {
-        link.style.transitionDelay = navUl.classList.contains('active')
-          ? `${index * 0.1 + 0.1}s`
-          : '0s';
-      });
-    }
-
-    // Close nav when a link is clicked (mobile)
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        navUl.classList.remove('active');
-      });
-    });
-
-    // Accessibility: toggle menu via keyboard on hamburger
-    hamburger.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
+  // Toggle submenu on mobile
+  document.addEventListener("DOMContentLoaded", () => {
+    const servicesLink = document.querySelector(".services-menu > a");
+    servicesLink.addEventListener("click", e => {
+      if (window.innerWidth <= 768) {
         e.preventDefault();
-        toggleMenu();
+        servicesLink.parentElement.classList.toggle("open");
       }
     });
-  </script>
+
+    // Close nav on mobile when link clicked
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.querySelector("nav").classList.remove("open");
+        document.querySelector(".services-menu").classList.remove("open");
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
