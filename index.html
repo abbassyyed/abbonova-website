@@ -115,9 +115,30 @@ nav a:hover {
   font-size: 1.2rem;
   color: #dce1f0;
 }
-.hero-content h1,
-.hero-content p {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Darkens the background */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 .section {
@@ -227,10 +248,17 @@ footer {
       </nav>
 <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
-  </header>  <section class="hero">
-    <h1>Welcome to ABBONOVA</h1>
-    <p>Innovative IT Solutions and Trusted General Trading</p>
-  </section>  <section class="section" id="about">
+  </header>  
+
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Welcome to Abbonova</h1>
+    <p>Your Trusted Partner in IT and Trading</p>
+  </div>
+</section>
+
+  <section class="section" id="about">
     <h2>About ABBONOVA</h2>
     <div class="cards">
       <div class="card">
