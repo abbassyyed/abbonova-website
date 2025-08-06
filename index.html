@@ -69,46 +69,62 @@
       list-style: none;
       display: flex;
       gap: 20px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-      z-index: 20;
     }
 
-    nav ul.active {
-      max-height: 500px; /* adjust based on your nav content */
-    }
-
-    nav ul li {
+    /* Mobile nav defaults */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: #0a1238;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 160px;
+        max-height: 0;
+        overflow: hidden;
+        border-radius: 5px;
+        transition: max-height 0.4s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      }
+      nav ul.active {
+        max-height: 500px; /* Enough height to show all links */
+      }
+      nav ul li {
         opacity: 0;
         transform: translateY(-10px);
         transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    nav ul.active li {
+        padding: 12px 15px;
+      }
+      nav ul.active li {
         opacity: 1;
         transform: translateY(0);
+      }
+      nav a {
+        display: block;
+        font-weight: 500;
+        color: var(--light);
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: var(--accent);
+      }
+      .hamburger {
+        display: block;
+        font-size: 28px;
+        cursor: pointer;
+        color: white;
+      }
     }
 
-/* Optional: prevent flashing animation on load */
-nav ul li {
-  transition-delay: 0.1s;
-}
-    nav a {
-      color: var(--light);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      color: var(--accent);
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: white;
+    /* Desktop nav */
+    @media (min-width: 769px) {
+      .hamburger {
+        display: none;
+      }
+      nav ul li {
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
 
     .hero-text {
@@ -134,31 +150,6 @@ nav ul li {
       color: #f1f1f1;
       text-shadow: 0 0 8px #000;
     }
-
-    @media (max-width: 768px) {
-      .header-container {
-        flex-wrap: wrap;
-      }
-
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: #0a1238;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        padding: 10px;
-        border-radius: 5px;
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      .hamburger {
-        display: block;
-      }
-    }
   </style>
 </head>
 <body>
@@ -168,17 +159,15 @@ nav ul li {
     </video>
     <div class="overlay"></div>
     <nav>
-  <div class="menu-toggle" onclick="toggleMenu()">
-    ☰
-  </div>
-  <ul>
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#founders">Founders</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#founders">Founders</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
     <div class="hero-text">
       <h1>Welcome to ABBONOVA</h1>
@@ -186,13 +175,13 @@ nav ul li {
     </div>
   </header> 
 
-<section class="hero">
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>Welcome to Abbonova</h1>
-    <p>Your Trusted Partner in IT and Trading</p>
-  </div>
-</section>
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Welcome to Abbonova</h1>
+      <p>Your Trusted Partner in IT and Trading</p>
+    </div>
+  </section>
 
   <section class="section" id="about">
     <h2>About ABBONOVA</h2>
@@ -214,7 +203,9 @@ nav ul li {
         </ul>
       </div>
     </div>
-  </section>  <section class="section">
+  </section>
+
+  <section class="section">
     <h2>Meet the Founders</h2>
     <div class="founders">
       <div class="founder">
@@ -228,7 +219,9 @@ nav ul li {
         <p>Co-Founder & CTO</p>
       </div>
     </div>
-  </section>  <footer id="contact">
+  </section>
+
+  <footer id="contact">
     <div class="footer-grid">
       <div>
         <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo" />
@@ -244,28 +237,27 @@ nav ul li {
     </div>
     <div class="footer-bottom">&copy; 2025 ABBONOVA. All rights reserved.</div>
   </footer>
-<script>
 
-  const navUl = document.querySelector("nav ul");
-  const links = document.querySelectorAll("nav ul li");
+  <script>
+    const navUl = document.querySelector("nav ul");
+    const links = document.querySelectorAll("nav ul li");
 
-  function toggleMenu() {
-    navUl.classList.toggle("active");
+    function toggleMenu() {
+      navUl.classList.toggle("active");
 
-    links.forEach((link, index) => {
-      link.style.transitionDelay = navUl.classList.contains("active")
-        ? `${index * 0.1}s`
-        : "0s";
+      links.forEach((link, index) => {
+        link.style.transitionDelay = navUl.classList.contains("active")
+          ? `${index * 0.1}s`
+          : "0s";
+      });
+    }
+
+    // Close nav when a link is clicked
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        navUl.classList.remove("active");
+      });
     });
-  }
-
-  // Close nav when a link is clicked
-  links.forEach((link) => {
-    link.addEventListener("click", () => {
-      navUl.classList.remove("active");
-    });
-  });
-</script>
-
+  </script>
 </body>
 </html>
