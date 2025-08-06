@@ -97,22 +97,6 @@
       filter: drop-shadow(0 0 8px var(--accent));
     }
 
-    .mobile-top {
-  display: block;
-  text-align: center;
-  padding: 16px 0 0 0;
-}
-
-.mobile-top img {
-  height: 60px;
-}
-
-.header-row {
-  display: none;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
-}
     .hamburger {
       font-size: 26px;
       color: var(--light);
@@ -166,24 +150,6 @@
     }
 
     /* Mobile styles */
-
-    @media (max-width: 768px) {
-  .header-row {
-    display: flex;
-  }
-
-  .company-name {
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--light);
-  }
-
-  .hamburger {
-    font-size: 26px;
-    color: var(--light);
-    cursor: pointer;
-  }
-}
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
@@ -253,6 +219,12 @@
       margin: auto;
     }
 
+    .section h3 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #00d9ff;
+}
     .cards {
       display: flex;
       flex-wrap: wrap;
@@ -320,21 +292,16 @@
 <body>
 
 <header>
-  <!-- Mobile Logo at Top -->
-  <div class="mobile-top">
-    <a href="https://www.abbonova.com">
-      <img src="assets/images/logo.png" alt="Abbonova Logo" class="logo glow" />
-    </a>
-  </div>
-
-  <!-- Row: Company Name + Hamburger -->
-  <div class="header-row">
-    <div class="company-name">ABBONOVA IT SERVICES</div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-  </div>
-
-  <!-- Navigation -->
   <nav>
+    <div class="header-bar">
+      <div class="company-name">ABBONOVA IT SERVICES</div>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+    <div class="center-logo">
+      <a href="https://www.abbonova.com">
+        <img src="assets/images/logo.png" alt="Abbonova Logo" class="logo glow" />
+      </a>
+    </div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li class="services-menu">
@@ -357,14 +324,14 @@
 </header>
 
 <section class="section" id="about">
-  <h2 align= center>Why ABBONOVA</h2>
+  <h2>Why ABBONOVA</h2>
   <div class="cards">
     <div class="card">
-      <h3 align= center>About us</h3>
-      <p align= center>ABBONOVA offers cutting-edge IT solutions and general trading expertise. We serve the private and government sectors, delivering reliable services, products, and digital solutions.</p>
+      <h3>About us</h3>
+      <p>ABBONOVA offers cutting-edge IT solutions and general trading expertise. We serve the private and government sectors, delivering reliable services, products, and digital solutions.</p>
     </div>
     <div class="card">
-      <h3 align= center>Our Services</h3>
+      <h3>Our Services</h3>
       <ul>
         <li>Software Development & IT Consultancy</li>
         <li>Import & Export (Machinery, Equipment, Tools)</li>
