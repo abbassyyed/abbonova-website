@@ -41,6 +41,20 @@ header {
 .logo {
   height: 50px;
 }
+.company-name {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-left: 15px;
+}
+
+@media (max-width: 768px) {
+  .company-name {
+    font-size: 1rem;
+    text-align: center;
+    margin: 10px 0;
+  }
+}
 
 nav ul {
   list-style: none;
@@ -57,7 +71,33 @@ nav a {
 nav a:hover {
   color: var(--accent);
 }
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+}
 
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #0a1238;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
 .hero {
   background: url('assets/images/bg-image.jpg') center/cover no-repeat;
   color: var(--light);
@@ -171,6 +211,7 @@ footer {
 <body>
   <header>
     <div class="header-container">
+<div class="company-name">ABBONOVA IT Services</div>
       <img src="assets/images/logo.png" alt="ABBONOVA Logo" class="logo" />
       <nav>
         <ul>
@@ -180,6 +221,7 @@ footer {
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
   </header>  <section class="hero">
     <h1>Welcome to ABBONOVA</h1>
@@ -234,5 +276,11 @@ footer {
     </div>
     <div class="footer-bottom">&copy; 2025 ABBONOVA. All rights reserved.</div>
   </footer>
+<script>
+  function toggleMenu() {
+    const nav = document.querySelector('nav ul');
+    nav.classList.toggle('active');
+  }
+</script>
 </body>
 </html>
