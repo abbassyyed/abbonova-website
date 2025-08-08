@@ -63,40 +63,95 @@
       text-shadow: 0 0 8px #000;
     }
 
+    /* Sidebar nav styles */
+
     nav {
       position: fixed;
       top: 0;
-      width: 100%;
-      background: rgba(10, 18, 56, 0.9);
+      right: 0;
+      height: 100vh;
+      width: 260px;
+      background: var(--secondary);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      padding-top: 60px; /* space for toggle button */
+      z-index: 200;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 20px;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-      flex-wrap: nowrap;
+      flex-direction: column;
+      box-shadow: -4px 0 12px rgba(0,0,0,0.5);
     }
 
-    .header-bar {
+    nav.open {
+      transform: translateX(0);
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 20px;
     }
 
-    .company-name {
-      font-size: 18px;
-      font-weight: bold;
+    .nav-links a {
       color: var(--light);
-      margin: 0;
+      text-decoration: none;
+      padding: 14px 24px;
+      display: block;
+      cursor: pointer;
     }
+
+    .nav-links a:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    .submenu {
+      display: none;
+      flex-direction: column;
+      margin-left: 20px;
+    }
+
+    .services-menu.open > .submenu {
+      display: flex;
+    }
+
+    .submenu a {
+      padding-left: 34px;
+      font-size: 0.95rem;
+    }
+
+    /* Toggle button */
+
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      width: 38px;
+      height: 38px;
+      background: var(--secondary);
+      border: none;
+      color: var(--light);
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    /* Logo position */
 
     .center-logo {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+      position: fixed;
+      top: 15px;
+      left: 20px;
+      z-index: 300;
     }
 
-    .logo {
+    .center-logo img {
       height: 50px;
       transition: filter 0.3s ease;
     }
@@ -105,147 +160,81 @@
       filter: drop-shadow(0 0 8px var(--accent));
     }
 
-    .hamburger {
-      font-size: 26px;
-      color: var(--light);
-      cursor: pointer;
-      user-select: none;
-      display: none;
-    }
+    /* Desktop nav styles */
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      margin-left: auto;
-    }
-
-    .nav-links li {
-      position: relative;
-    }
-
-    .nav-links a {
-      color: var(--light);
-      text-decoration: none;
-      padding: 10px 14px;
-      display: block;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .submenu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--secondary);
-      padding: 0;
-      border-radius: 4px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-      z-index: 10;
-      min-width: 160px;
-    }
-
-    .services-menu:hover .submenu {
-      display: block;
-    }
-
-    .submenu li {
-      display: block;
-      width: 100%;
-    }
-
-    .submenu li a {
-      display: block;
-      padding: 10px 16px;
-      text-align: center;
-      width: 100%;
-      color: white;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .submenu li a:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    /* Mobile styles */
-    @media (max-width: 768px) {
+    @media (min-width: 769px) {
       nav {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0;
-        background: var(--secondary);
-        position: relative;
-      }
-
-      .center-logo {
-        order: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 60px;
         width: 100%;
-        text-align: center;
-        padding: 12px 0;
-        position: static;
-        transform: none;
-      }
-
-      .header-bar {
-        order: 2;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 12px 20px;
-      }
-
-      .hamburger {
-        display: block;
+        background: rgba(10, 18, 56, 0.9);
+        transform: translateX(0);
+        flex-direction: row;
+        padding: 0 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
       }
 
       .nav-links {
-        order: 3;
-        flex-direction: column;
-        width: 100%;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-      }
-
-      nav.open .nav-links {
-        max-height: 500px;
-      }
-
-      .nav-links li {
-        width: 100%;
+        flex-direction: row;
+        gap: 24px;
+        align-items: center;
+        margin-left: auto;
       }
 
       .nav-links a {
-        padding: 14px 20px;
-        width: 100%;
+        padding: 10px 14px;
+        text-align: center;
       }
 
       .submenu {
-        position: static;
-        box-shadow: none;
-        border-radius: 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: var(--secondary);
         padding: 0;
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        min-width: 160px;
+        display: none;
+        z-index: 10;
+      }
+
+      .services-menu:hover > .submenu {
+        display: block;
+      }
+
+      .submenu li {
         width: 100%;
       }
 
       .submenu li a {
-        padding-left: 30px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        text-align: center;
+        padding: 10px 16px;
+        text-align: left;
+        width: 100%;
+        color: white;
+        text-decoration: none;
+        transition: background 0.3s ease;
       }
 
-      .services-menu.open .submenu {
-        display: block;
+      .submenu li a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .toggle-btn {
+        display: none;
+      }
+
+      .center-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 7px;
       }
     }
+
+    /* Rest of your styles below (sections, footer, etc.) */
 
     .section {
       padding: 60px 20px;
@@ -333,27 +322,26 @@
 <body>
 
 <header>
-  <nav>
-    <div class="center-logo">
-      <a href="https://www.abbonova.com">
-        <img src="assets/images/logo.png" alt="Abbonova Logo" class="logo glow" />
-      </a>
-    </div>
-    <div class="header-bar">
-      <h1 class="company-name">ABBONOVA IT SERVICES</h1>
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </div>
+  <div class="center-logo">
+    <a href="https://www.abbonova.com">
+      <img src="assets/images/logo.png" alt="Abbonova Logo" class="logo glow" />
+    </a>
+  </div>
+
+  <button class="toggle-btn" id="toggleBtn" aria-label="Toggle Menu">☰</button>
+
+  <nav id="sidebarNav">
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
+      <li><a href="#about" class="nav-item">About</a></li>
       <li class="services-menu">
-        <a href="#" id="services-link">Services</a>
+        <a href="#" id="services-link" class="nav-item">Services</a>
         <ul class="submenu">
           <li><a href="it-services.html">IT Services</a></li>
           <li><a href="general-trading.html">General Trading</a></li>
         </ul>
       </li>
-      <li><a href="#founders">Founders</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#founders" class="nav-item">Founders</a></li>
+      <li><a href="#contact" class="nav-item">Contact</a></li>
     </ul>
   </nav>
 
@@ -418,12 +406,19 @@
 </footer>
 
 <script>
-  function toggleMenu() {
-    document.querySelector('nav').classList.toggle('open');
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('toggleBtn');
+  const sidebarNav = document.querySelector('nav');
   const servicesLink = document.getElementById('services-link');
+
+  toggleBtn.addEventListener('click', () => {
+    sidebarNav.classList.toggle('open');
+    toggleBtn.textContent = sidebarNav.classList.contains('open') ? '←' : '☰';
+    // Close submenu when sidebar closes
+    if (!sidebarNav.classList.contains('open')) {
+      document.querySelector('.services-menu').classList.remove('open');
+    }
+  });
+
   servicesLink.addEventListener('click', e => {
     if (window.innerWidth <= 768) {
       e.preventDefault();
@@ -431,13 +426,16 @@
     }
   });
 
+  // Close sidebar when clicking a nav item except Services toggle
   document.querySelectorAll('.nav-links > li > a:not(#services-link)').forEach(link => {
     link.addEventListener('click', () => {
-      document.querySelector('nav').classList.remove('open');
-      document.querySelector('.services-menu').classList.remove('open');
+      if (sidebarNav.classList.contains('open')) {
+        sidebarNav.classList.remove('open');
+        toggleBtn.textContent = '☰';
+        document.querySelector('.services-menu').classList.remove('open');
+      }
     });
   });
-});
 </script>
 
 </body>
