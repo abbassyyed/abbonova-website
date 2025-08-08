@@ -63,127 +63,120 @@
       text-shadow: 0 0 8px #000;
     }
 
+    /* Header bar structure */
+
+    /* Desktop header bar container */
     .header-bar {
       position: fixed;
       top: 15px;
-      left: 80px; /* leave space for logo on left */
-      z-index: 300;
+      left: 0;
+      right: 0;
       display: flex;
       align-items: center;
-      gap: 12px;
-      color: var(--light);
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 300;
+      user-select: none;
       font-weight: bold;
       font-size: 18px;
-      user-select: none;
+      color: var(--light);
+      height: 50px;
+      background: rgba(10, 18, 56, 0.8);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
 
-    @media (max-width: 768px) {
-      .header-bar {
-        position: space-around;
-        top: 15px;
-        left: 20px;
-        font-size: 16px;
-      }
-
-      /* Keep toggle button on right, inside header-bar */
-      .toggle-btn {
-        position: static;
-        margin-left: auto;
-      }
+    /* Desktop: company name left */
+    .company-name {
+      flex: 1;
+      text-align: left;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 1px;
     }
 
-    @media (min-width: 769px) {
-      .toggle-btn {
-        display: none;
-      }
-    }
-
-    /* Sidebar nav styles */
-
-    nav {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100vh;
-      width: 260px;
-      background: var(--secondary);
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      padding-top: 60px; /* space for toggle button */
-      z-index: 200;
+    /* Desktop: nav container (menu) */
+    nav#sidebarNav.desktop-menu {
+      flex: 1;
       display: flex;
-      flex-direction: column;
-      box-shadow: -4px 0 12px rgba(0,0,0,0.5);
+      justify-content: flex-end;
     }
 
-    nav.open {
-      transform: translateX(0);
-    }
-
-    .nav-links {
+    nav#sidebarNav.desktop-menu ul.nav-links {
+      display: flex;
+      gap: 24px;
       list-style: none;
-      padding: 0;
+      align-items: center;
       margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      padding: 0;
     }
 
-    .nav-links a {
+    nav#sidebarNav.desktop-menu ul.nav-links li {
+      position: relative;
+    }
+
+    nav#sidebarNav.desktop-menu ul.nav-links li a {
       color: var(--light);
       text-decoration: none;
-      padding: 14px 24px;
-      display: block;
+      padding: 10px 14px;
+      font-weight: 500;
       cursor: pointer;
+      display: block;
+      white-space: nowrap;
+      transition: background 0.3s ease;
     }
 
-    .nav-links a:hover {
+    nav#sidebarNav.desktop-menu ul.nav-links li a:hover {
       background: var(--accent);
       color: var(--primary);
+      border-radius: 4px;
     }
 
+    /* Desktop submenu */
     .submenu {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      background: var(--secondary);
+      padding: 0;
+      border-radius: 4px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+      min-width: 160px;
       display: none;
       flex-direction: column;
-      margin-left: 20px;
+      z-index: 10;
     }
 
-    .services-menu.open > .submenu {
+    .services-menu:hover > .submenu {
       display: flex;
     }
 
-    .submenu a {
-      padding-left: 34px;
+    .submenu li {
+      width: 100%;
+    }
+
+    .submenu li a {
+      padding: 10px 16px;
+      color: white;
+      text-decoration: none;
       font-size: 0.95rem;
+      transition: background 0.3s ease;
+      text-align: left;
     }
 
-    /* Toggle button */
-
-    .toggle-btn {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      width: 38px;
-      height: 38px;
-      background: var(--secondary);
-      border: none;
-      color: var(--light);
-      font-size: 28px;
-      cursor: pointer;
-      z-index: 300;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      user-select: none;
+    .submenu li a:hover {
+      background: rgba(255, 255, 255, 0.1);
     }
 
-    /* Logo position */
-
+    /* Logo center for desktop */
     .center-logo {
       position: fixed;
       top: 15px;
-      left: 20px;
-      z-index: 300;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 350;
+      height: 50px;
+      display: flex;
+      align-items: center;
     }
 
     .center-logo img {
@@ -195,81 +188,136 @@
       filter: drop-shadow(0 0 8px var(--accent));
     }
 
-    /* Desktop nav styles */
-
-    @media (min-width: 769px) {
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 60px;
-        width: 100%;
-        background: rgba(10, 18, 56, 0.9);
-        transform: translateX(0);
-        flex-direction: row;
-        padding: 0 20px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-      }
-
-      .nav-links {
-        flex-direction: row;
-        gap: 24px;
-        align-items: center;
-        margin-left: auto;
-      }
-
-      .nav-links a {
-        padding: 10px 14px;
-        text-align: center;
-      }
-
-      .submenu {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background: var(--secondary);
-        padding: 0;
-        border-radius: 4px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-        min-width: 160px;
-        display: none;
-        z-index: 10;
-      }
-
-      .services-menu:hover > .submenu {
-        display: block;
-      }
-
-      .submenu li {
-        width: 100%;
-      }
-
-      .submenu li a {
-        padding: 10px 16px;
-        text-align: left;
-        width: 100%;
-        color: white;
-        text-decoration: none;
-        transition: background 0.3s ease;
-      }
-
-      .submenu li a:hover {
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      .toggle-btn {
-        display: none;
-      }
-
-      .center-logo {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: 7px;
-      }
+    /* Toggle button hidden on desktop */
+    .toggle-btn {
+      display: none;
     }
 
-    /* Rest of your styles below (sections, footer, etc.) */
+    /* Sidebar nav (for mobile) */
+    nav#sidebarNav.mobile-menu {
+      position: fixed;
+      top: 120px; /* below mobile header */
+      right: 0;
+      height: calc(100vh - 120px);
+      width: 260px;
+      background: var(--secondary);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      padding-top: 20px;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -4px 0 12px rgba(0,0,0,0.5);
+    }
+
+    nav#sidebarNav.mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    nav#sidebarNav.mobile-menu ul.nav-links {
+      list-style: none;
+      padding: 0 0 0 10px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    nav#sidebarNav.mobile-menu ul.nav-links li a {
+      color: var(--light);
+      text-decoration: none;
+      padding: 14px 24px;
+      display: block;
+      cursor: pointer;
+    }
+
+    nav#sidebarNav.mobile-menu ul.nav-links li a:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    nav#sidebarNav.mobile-menu .submenu {
+      display: none;
+      flex-direction: column;
+      margin-left: 20px;
+    }
+
+    nav#sidebarNav.mobile-menu .services-menu.open > .submenu {
+      display: flex;
+    }
+
+    nav#sidebarNav.mobile-menu .submenu a {
+      padding-left: 34px;
+      font-size: 0.95rem;
+    }
+
+    /* Mobile header container: two rows */
+    .mobile-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 18, 56, 0.9);
+      z-index: 350;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 20px 0 20px;
+      user-select: none;
+    }
+
+    .mobile-header-row1,
+    .mobile-header-row2 {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Logo row (row 1) */
+    .mobile-header-row1 {
+      padding: 5px 0;
+    }
+
+    .mobile-header-row1 img {
+      height: 50px;
+      transition: filter 0.3s ease;
+    }
+
+    /* Company name and toggle button row (row 2) */
+    .mobile-header-row2 {
+      margin-top: 5px;
+      justify-content: center;
+      padding-bottom: 10px;
+    }
+
+    .mobile-company-name {
+      flex: 1;
+      text-align: center;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--light);
+      letter-spacing: 1px;
+    }
+
+    .toggle-btn {
+      position: static;
+      width: 38px;
+      height: 38px;
+      background: var(--secondary);
+      border: none;
+      color: var(--light);
+      font-size: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      margin-left: auto;
+    }
+
+    /* Sections */
 
     .section {
       padding: 60px 20px;
@@ -352,27 +400,101 @@
       margin-top: 20px;
       font-size: 14px;
     }
+
+    /* Responsive */
+
+    @media (min-width: 769px) {
+      /* Hide mobile header */
+      .mobile-header {
+        display: none;
+      }
+
+      /* Show desktop nav */
+      nav#sidebarNav.mobile-menu {
+        display: none;
+      }
+
+      nav#sidebarNav.desktop-menu {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Hide desktop nav */
+      nav#sidebarNav.desktop-menu {
+        display: none;
+      }
+
+      /* Show mobile header */
+      .mobile-header {
+        display: flex;
+      }
+
+      /* Show mobile nav */
+      nav#sidebarNav.mobile-menu {
+        display: flex;
+      }
+
+      /* Hide desktop header bar */
+      .header-bar {
+        display: none;
+      }
+
+      /* Hide center logo fixed */
+      .center-logo {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
 
 <header>
+  <!-- Desktop Logo fixed center -->
   <div class="center-logo">
     <a href="https://www.abbonova.com">
       <img src="assets/images/logo.png" alt="Abbonova Logo" class="logo glow" />
     </a>
   </div>
 
+  <!-- Desktop header bar -->
   <div class="header-bar">
-    <h1 class="company-name">ABBONOVA IT SERVICES</h1>
-    <button class="toggle-btn" id="toggleBtn" aria-label="Toggle Menu">☰</button>
+    <div class="company-name">ABBONOVA IT SERVICES</div>
+    <nav id="sidebarNav" class="desktop-menu" aria-label="Primary navigation">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li class="services-menu">
+          <a href="#" id="services-link-desktop">Services</a>
+          <ul class="submenu">
+            <li><a href="it-services.html">IT Services</a></li>
+            <li><a href="general-trading.html">General Trading</a></li>
+          </ul>
+        </li>
+        <li><a href="#founders">Founders</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </div>
 
-  <nav id="sidebarNav">
+  <!-- Mobile header -->
+  <div class="mobile-header" role="banner" aria-label="Mobile header">
+    <div class="mobile-header-row1">
+      <a href="https://www.abbonova.com" aria-label="Home">
+        <img src="assets/images/logo.png" alt="Abbonova Logo" />
+      </a>
+    </div>
+    <div class="mobile-header-row2">
+      <div class="mobile-company-name" aria-label="Company name">ABBONOVA IT SERVICES</div>
+      <button class="toggle-btn" id="toggleBtn" aria-label="Toggle Menu" aria-expanded="false" aria-controls="sidebarNav">☰</button>
+    </div>
+  </div>
+
+  <!-- Mobile nav sidebar -->
+  <nav id="sidebarNavMobile" class="mobile-menu" aria-label="Mobile navigation">
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li class="services-menu">
-        <a href="#" id="services-link">Services</a>
+        <a href="#" id="services-link-mobile">Services</a>
         <ul class="submenu">
           <li><a href="it-services.html">IT Services</a></li>
           <li><a href="general-trading.html">General Trading</a></li>
@@ -445,36 +567,39 @@
 
 <script>
   const toggleBtn = document.getElementById('toggleBtn');
-  const sidebarNav = document.getElementById('sidebarNav');
-  const servicesLink = document.getElementById('services-link');
+  const sidebarNavMobile = document.getElementById('sidebarNavMobile');
+  const servicesLinkMobile = document.getElementById('services-link-mobile');
 
   toggleBtn.addEventListener('click', () => {
-    sidebarNav.classList.toggle('open');
-    toggleBtn.textContent = sidebarNav.classList.contains('open') ? '←' : '☰';
+    sidebarNavMobile.classList.toggle('open');
+    const expanded = sidebarNavMobile.classList.contains('open');
+    toggleBtn.textContent = expanded ? '←' : '☰';
+    toggleBtn.setAttribute('aria-expanded', expanded);
+
     // Close submenu when sidebar closes
-    if (!sidebarNav.classList.contains('open')) {
-      document.querySelector('.services-menu').classList.remove('open');
+    if (!expanded) {
+      document.querySelector('.services-menu.open')?.classList.remove('open');
     }
   });
 
-  servicesLink.addEventListener('click', e => {
+  servicesLinkMobile.addEventListener('click', e => {
     if (window.innerWidth <= 768) {
       e.preventDefault();
-      servicesLink.parentElement.classList.toggle('open');
+      servicesLinkMobile.parentElement.classList.toggle('open');
     }
   });
 
-  // Close sidebar when clicking a nav item except Services toggle
-  document.querySelectorAll('.nav-links > li > a:not(#services-link)').forEach(link => {
+  // Close sidebar when clicking nav item except Services toggle
+  document.querySelectorAll('#sidebarNavMobile .nav-links > li > a:not(#services-link-mobile)').forEach(link => {
     link.addEventListener('click', () => {
-      if (sidebarNav.classList.contains('open')) {
-        sidebarNav.classList.remove('open');
+      if (sidebarNavMobile.classList.contains('open')) {
+        sidebarNavMobile.classList.remove('open');
         toggleBtn.textContent = '☰';
-        document.querySelector('.services-menu').classList.remove('open');
+        toggleBtn.setAttribute('aria-expanded', false);
+        document.querySelector('.services-menu.open')?.classList.remove('open');
       }
     });
   });
-</script>
 
-</body>
-</html>
+  // Desktop services submenu link prevent default and no toggle on hover (desktop submenu opens on hover)
+  const servicesLinkDesktop = document.get
