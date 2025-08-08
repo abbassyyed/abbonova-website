@@ -220,11 +220,11 @@
 
 <script>
   function toggleMenu() {
-    const nav = document.querySelector('nav');
-    const hamburger = document.querySelector('.hamburger');
-    nav.classList.toggle('open');
-    hamburger.textContent = nav.classList.contains('open') ? '→' : '☰';
-  }
+  const nav = document.querySelector('nav');
+  const hamburger = document.querySelector('.hamburger');
+  nav.classList.toggle('open');
+  hamburger.textContent = nav.classList.contains('open') ? '✕' : '☰';
+}
 
   document.addEventListener('DOMContentLoaded', () => {
     const servicesLink = document.getElementById('services-link');
