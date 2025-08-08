@@ -63,41 +63,42 @@
       text-shadow: 0 0 8px #000;
     }
 
-   .header-bar {
-  position: fixed;
-  top: 15px;
-  left: 80px; /* leave space for logo on left */
-  z-index: 300;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--light);
-  font-weight: bold;
-  font-size: 18px;
-  user-select: none;
-}
+    .header-bar {
+      position: fixed;
+      top: 15px;
+      left: 80px; /* leave space for logo on left */
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--light);
+      font-weight: bold;
+      font-size: 18px;
+      user-select: none;
+    }
 
-@media (max-width: 768px) {
-  .header-bar {
-    position: fixed;
-    top: 15px;
-    left: 20px;
-    font-size: 16px;
-  }
+    @media (max-width: 768px) {
+      .header-bar {
+        position: fixed;
+        top: 15px;
+        left: 20px;
+        font-size: 16px;
+      }
 
-  /* Keep toggle button on right, inside header-bar */
-  .toggle-btn {
-    position: static;
-    margin-left: auto;
-  }
-}
+      /* Keep toggle button on right, inside header-bar */
+      .toggle-btn {
+        position: static;
+        margin-left: auto;
+      }
+    }
 
-@media (min-width: 769px) {
-  .toggle-btn {
-    display: none;
-  }
-}
- /* Sidebar nav styles */
+    @media (min-width: 769px) {
+      .toggle-btn {
+        display: none;
+      }
+    }
+
+    /* Sidebar nav styles */
 
     nav {
       position: fixed;
@@ -356,8 +357,6 @@
 <body>
 
 <header>
-
- <header>
   <div class="center-logo">
     <a href="https://www.abbonova.com">
       <img src="assets/images/logo.png" alt="Abbonova Logo" class="logo glow" />
@@ -370,16 +369,26 @@
   </div>
 
   <nav id="sidebarNav">
-    <!-- nav content -->
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li class="services-menu">
+        <a href="#" id="services-link">Services</a>
+        <ul class="submenu">
+          <li><a href="it-services.html">IT Services</a></li>
+          <li><a href="general-trading.html">General Trading</a></li>
+        </ul>
+      </li>
+      <li><a href="#founders">Founders</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
-  
-  <!-- rest remains -->
 </header>
 
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>Welcome to ABBONOVA</h1>
-    <p>Your Trusted IT & Trading Partner</p>
+<div class="overlay"></div>
+<div class="hero-content">
+  <h1>Welcome to ABBONOVA</h1>
+  <p>Your Trusted IT & Trading Partner</p>
+</div>
 
 <section class="section" id="about">
   <h2>Why ABBONOVA</h2>
@@ -436,7 +445,7 @@
 
 <script>
   const toggleBtn = document.getElementById('toggleBtn');
-  const sidebarNav = document.querySelector('nav');
+  const sidebarNav = document.getElementById('sidebarNav');
   const servicesLink = document.getElementById('services-link');
 
   toggleBtn.addEventListener('click', () => {
