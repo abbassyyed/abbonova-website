@@ -167,6 +167,36 @@
 }
 
     /* Mobile styles */
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    background: var(--secondary);
+  }
+
+  /* Make header elements stack in your desired order */
+  .center-logo {
+    order: 1;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .header-bar {
+    order: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
