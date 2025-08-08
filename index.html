@@ -423,21 +423,21 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    const servicesLink = document.getElementById('services-link');
-    servicesLink.addEventListener('click', e => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        servicesLink.parentElement.classList.toggle('open');
-      }
-    });
+  const servicesLink = document.getElementById('services-link');
+  servicesLink.addEventListener('click', e => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      servicesLink.parentElement.classList.toggle('open');
+    }
+  });
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelector('nav').classList.remove('open');
-        document.querySelector('.services-menu').classList.remove('open');
-      });
+  document.querySelectorAll('.nav-links > li > a:not(#services-link)').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('nav').classList.remove('open');
+      document.querySelector('.services-menu').classList.remove('open');
     });
   });
+});
 </script>
 
 </body>
