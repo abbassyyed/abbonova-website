@@ -63,7 +63,41 @@
       text-shadow: 0 0 8px #000;
     }
 
-    /* Sidebar nav styles */
+   .header-bar {
+  position: fixed;
+  top: 15px;
+  left: 80px; /* leave space for logo on left */
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--light);
+  font-weight: bold;
+  font-size: 18px;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .header-bar {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    font-size: 16px;
+  }
+
+  /* Keep toggle button on right, inside header-bar */
+  .toggle-btn {
+    position: static;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 769px) {
+  .toggle-btn {
+    display: none;
+  }
+}
+ /* Sidebar nav styles */
 
     nav {
       position: fixed;
