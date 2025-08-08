@@ -40,10 +40,12 @@
     nav {
       position: fixed; top: 0; width: 100%;
       background: rgba(10, 18, 56, 0.9);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 20px; z-index: 200; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      z-index: 200; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
-    .header-bar { display: flex; align-items: center; gap: 20px; }
+    .nav-desktop {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px;
+    }
     .company-name { font-size: 18px; font-weight: bold; color: var(--light); }
     .center-logo img.logo { height: 50px; transition: filter 0.3s ease; }
     .logo.glow:hover { filter: drop-shadow(0 0 8px var(--accent)); }
@@ -53,7 +55,6 @@
       display: none; transition: transform 0.3s ease;
     }
 
-    /* Sidebar menu */
     .nav-links {
       list-style: none; display: flex; gap: 24px; align-items: center;
     }
@@ -77,8 +78,14 @@
     }
     .submenu li a:hover { background: rgba(255, 255, 255, 0.1); }
 
-    /* Mobile styles */
+    /* Mobile layout */
     @media (max-width: 768px) {
+      .nav-desktop { flex-direction: column; padding: 0; }
+      .row1 { display: flex; justify-content: center; padding: 8px 0; }
+      .row2 {
+        display: flex; justify-content: space-between; align-items: center;
+        width: 100%; padding: 8px 20px;
+      }
       .hamburger { display: block; }
       .nav-links {
         flex-direction: column;
@@ -124,27 +131,31 @@
 
 <header>
   <nav>
-    <div class="header-bar">
-      <h1 class="company-name">ABBONOVA IT SERVICES</h1>
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-desktop">
+      <div class="row1">
+        <div class="center-logo">
+          <a href="https://www.abbonova.com">
+            <img src="assets/images/logo.png" alt="Abbonova Logo" class="logo glow" />
+          </a>
+        </div>
+      </div>
+      <div class="row2">
+        <h1 class="company-name">ABBONOVA IT SERVICES</h1>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li class="services-menu">
+          <a href="#" id="services-link">Services</a>
+          <ul class="submenu">
+            <li><a href="it-services.html">IT Services</a></li>
+            <li><a href="general-trading.html">General Trading</a></li>
+          </ul>
+        </li>
+        <li><a href="#founders">Founders</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <div class="center-logo">
-      <a href="https://www.abbonova.com">
-        <img src="assets/images/logo.png" alt="Abbonova Logo" class="logo glow" />
-      </a>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li class="services-menu">
-        <a href="#" id="services-link">Services</a>
-        <ul class="submenu">
-          <li><a href="it-services.html">IT Services</a></li>
-          <li><a href="general-trading.html">General Trading</a></li>
-        </ul>
-      </li>
-      <li><a href="#founders">Founders</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
   </nav>
 
   <div class="overlay"></div>
