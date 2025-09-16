@@ -144,28 +144,26 @@
       </a>
 
       <!-- IT Services Dropdown -->
-    <div class="relative group">
-  <!-- Dropdown Trigger -->
-  <a href="#" id="services-btn"
-    class="text-white text-sm font-medium border-b-2 border-transparent hover:border-[#4F8CC9] transition md:cursor-default">
-    IT Services
-  </a>
+      <div class="relative group">
+        <button id="services-btn"
+          class="text-white text-sm font-medium border-b-2 border-transparent hover:border-[#4F8CC9] transition md:cursor-default">
+          IT Services
+        </button>
 
-  <!-- Dropdown Menu -->
-  <div id="services-menu" class="absolute left-0 top-full mt-2 w-40
-    bg-[#1a191b] border border-white/10 rounded-lg shadow-lg p-2
-    opacity-0 invisible translate-y-1
-    group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-    transition-all duration-300 delay-150">
+        <div id="services-menu" class="hidden md:absolute md:left-0 md:top-full md:mt-2 md:w-40
+          md:bg-[#1a191b] md:border md:border-white/10 md:rounded-lg md:shadow-lg md:p-2
+          md:opacity-0 md:invisible md:translate-y-1
+          md:group-hover:opacity-100 md:group-hover:visible md:group-hover:translate-y-0
+          md:transition-all md:duration-300 md:delay-200">
 
-    <a href="#cybersecurity" class="block px-3 py-2 text-sm text-white hover:text-[#4F8CC9]">
-      Cybersecurity
-    </a>
-    <a href="#webdev" class="block px-3 py-2 text-sm text-white hover:text-[#4F8CC9]">
-      Web Development
-    </a>
-  </div>
-</div>
+          <a href="#cybersecurity" class="block px-3 py-2 text-sm text-white hover:text-[#4F8CC9]">
+            Cybersecurity
+          </a>
+          <a href="#webdev" class="block px-3 py-2 text-sm text-white hover:text-[#4F8CC9]">
+            Web Development
+          </a>
+        </div>
+      </div>
 
       <a href="/general-trading.html"
         class="text-white text-sm font-medium border-b-2 border-transparent hover:border-[#4F8CC9] transition">
@@ -632,19 +630,6 @@
       menu.classList.toggle("hidden");
     });
 
-    const servicesBtn = document.getElementById("services-btn");
-  const servicesMenu = document.getElementById("services-menu");
-
-  servicesBtn.addEventListener("click", (e) => {
-    if (window.innerWidth < 768) { // only mobile
-      e.preventDefault();
-      servicesMenu.classList.toggle("opacity-100");
-      servicesMenu.classList.toggle("visible");
-      servicesMenu.classList.toggle("opacity-0");
-      servicesMenu.classList.toggle("invisible");
-    }
-  });
-
     // Dropdown toggle (mobile only)
     const servicesBtn = document.getElementById("services-btn");
     const servicesMenu = document.getElementById("services-menu");
@@ -964,128 +949,7 @@
       }
     });
 
-const menuBtn = document.getElementById("menu-btn");
-  const menu = document.getElementById("menu");
 
-  menuBtn.addEventListener("click", () => {
-    const isOpen = menu.classList.contains("flex");
-    
-    if (isOpen) {
-      menu.classList.remove("flex");
-      menu.classList.add("hidden");
-      menuBtn.setAttribute("aria-expanded", "false");
-    } else {
-      menu.classList.remove("hidden");
-      menu.classList.add("flex");
-      menuBtn.setAttribute("aria-expanded", "true");
-    }
-  });
-
-    const menuBtn = document.getElementById("menu-btn");
-  const menu = document.getElementById("menu");
-  const servicesBtn = document.getElementById("services-btn");
-  const servicesMenu = document.getElementById("services-menu");
-
-  // Mobile menu toggle
-  menuBtn.addEventListener("click", () => {
-    const isOpen = menu.classList.contains("flex");
-
-    if (isOpen) {
-      menu.classList.remove("flex");
-      menu.classList.add("hidden");
-      menuBtn.setAttribute("aria-expanded", "false");
-    } else {
-      menu.classList.remove("hidden");
-      menu.classList.add("flex");
-      menuBtn.setAttribute("aria-expanded", "true");
-    }
-  });
-
-  // IT Services dropdown toggle (mobile only)
-  servicesBtn.addEventListener("click", (e) => {
-    // Prevent default hover behavior
-    e.preventDefault();
-
-    if (window.innerWidth < 768) { // only mobile
-      servicesMenu.classList.toggle("hidden");
-    }
-  });
-
-     document.addEventListener("DOMContentLoaded", () => {
-    const servicesBtn = document.getElementById("services-btn");
-    const servicesMenu = document.getElementById("services-menu");
-
-    // Detect if device is touch-based
-    const isTouch = window.matchMedia("(hover: none)").matches;
-
-    if (isTouch) {
-      servicesBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        servicesMenu.classList.toggle("opacity-100");
-        servicesMenu.classList.toggle("visible");
-        servicesMenu.classList.toggle("translate-y-0");
-        servicesMenu.classList.toggle("opacity-0");
-        servicesMenu.classList.toggle("invisible");
-        servicesMenu.classList.toggle("translate-y-1");
-      });
-    }
-  });
-
-     document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("services-btn");
-    const menu = document.getElementById("services-menu");
-
-    // For mobile click
-    btn.addEventListener("click", (e) => {
-      if (window.innerWidth < 768) { // only for mobile
-        e.preventDefault();
-        menu.classList.toggle("opacity-100");
-        menu.classList.toggle("visible");
-        menu.classList.toggle("translate-y-0");
-        menu.classList.toggle("opacity-0");
-        menu.classList.toggle("invisible");
-        menu.classList.toggle("translate-y-1");
-      }
-    });
-
-    // Close menu when clicking outside on mobile
-    document.addEventListener("click", (e) => {
-      if (window.innerWidth < 768 && !btn.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.add("opacity-0", "invisible", "translate-y-1");
-        menu.classList.remove("opacity-100", "visible", "translate-y-0");
-      }
-    });
-  });
-
-    document.addEventListener("DOMContentLoaded", function () {
-    const btn = document.getElementById("services-btn");
-    const menu = document.getElementById("services-menu");
-
-    // Detect mobile vs desktop by width
-    function isMobile() {
-      return window.innerWidth < 768; // Tailwind md breakpoint
-    }
-
-    btn.addEventListener("click", function (e) {
-      if (isMobile()) {
-        e.preventDefault(); // Prevent jump
-        menu.classList.toggle("opacity-100");
-        menu.classList.toggle("visible");
-        menu.classList.toggle("translate-y-0");
-        menu.classList.toggle("opacity-0");
-        menu.classList.toggle("invisible");
-        menu.classList.toggle("translate-y-1");
-      }
-    });
-
-    // Optional: Close menu if user taps outside
-    document.addEventListener("click", function (e) {
-      if (isMobile() && !btn.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.add("opacity-0", "invisible", "translate-y-1");
-        menu.classList.remove("opacity-100", "visible", "translate-y-0");
-      }
-    });
-  });
 
   </script>
 
